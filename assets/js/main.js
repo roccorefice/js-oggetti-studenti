@@ -10,51 +10,60 @@ for ( var key in studenteUno){
     var nomeStudente = studenteUno["nome"];
     var cognomeStudente = studenteUno["cognome"];
     var etaStudente = studenteUno["eta"];
-
     var markup = "💻 Ciao! Io sono uno " + nomeStudente + " " + cognomeStudente + " ed ho " + etaStudente + " anni 👦";
     document.getElementById('sezione_studenteUno').innerHTML = markup;
 }
-// Dare la possibilità all’utente attraverso 3 prompt di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
-var bottone = $('#bottone');
-var nomeUser;
-var cognomeUser;
+
+
+// Creare un array di oggetti di studenti. Ciclare su tutti gli studenti e stampare per ognuno nome e cognome
+var bottoneUno = $('#bottoneUno');
+var bottoneDue = $('#bottoneDue');
+var sezione_studenti = $('#sezione_studenti')
+var listaNuoviStudenti
 var eta;
-// bottone.click(function(){
-    var studenteDue = {
-        nomeUser : prompt("Come ti chiami? Inserisci il nome"),
-        cognomeUser : prompt("Qual è il tuo cognome?"),
-        eta : Number(prompt("Quanti anni hai?"))
-    }
-    //console.log(studenteDue);
-    // Creare un array di oggetti di studenti. Ciclare su tutti gli studenti e stampare per ognuno nome e cognome
-    var studenti = [
-        studenteUno,
-        studenteDue
-        // {
-        // nome: "Studente",
-        // cognome: "Virtuale",
-        // },
-        // {
-        // nome: nomeUser,
-        // cognome: cognomeUser,
-        // }
+var studenti;
+var nuovo_studente = $('#nuovo_studente');
+
+bottoneUno.click(function(){
+    studenti = [
+        {
+        nome: "Paolo",
+        cognome: "Bonolis",
+        },
+        {
+        nome: "Maria",
+        cognome: "De Filippi",
+        },
+        {
+        nome: "Pippo",
+        cognome: "Baudo",
+        }
     ]
     for (var key in studenti){
-        var nomeStudenteUno = studenti["nome"];
-        var nomeStudenteDue = studenti["nomeUser"]
-        var cognomeStudenteUno = studenti["cognome"];
-        var cognomeStudenteDue = studenti["cognomeUser"];
-
-
-        var markup = "Benvenuto" + nomeStudenteUno +" "+ cognomeStudenteUno + " e " + nomeStudenteDue +" "+ cognomeStudenteDue;
-        
-        document.getElementById('sezione_studenti').innerHTML = markup;
-        
+        var nomi = studenti[key].nome;
+        var cognomi = studenti[key].cognome;
+        var markup = " " + nomi + " " + cognomi;
+        document.getElementById('sezione_studenti').innerHTML += markup;
     }
-    console.log(studenti);
-
-// });
+});
 
 
+////Dare la possibilità all’utente attraverso 3 prompt di aggiungere un nuovo oggetto studente inserendo nell’ordine: nome, cognome e età.
+bottoneDue = $('#bottoneDue');
+bottoneDue.click(function(){
+    
+    var nomeNuovoStudente = prompt("Inserisci il nome");
+    var cognomeNuovoStudente = prompt("Inserisci il cognome");
+    var etaNuovoStudente = prompt("Inserisci l'età");
 
+    studenti.push({
+        nome : nomeNuovoStudente,
+        cognome: cognomeNuovoStudente,
+        eta : etaNuovoStudente
+    });
+
+   for (var key in studenti) {
+    document.getElementById("nuovo_studente").innerHTML += studenti[key].nome +" "+ studenti[key].cognome + " "  ;
+ }
+});
 
