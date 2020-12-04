@@ -40,9 +40,12 @@ bottoneUno.click(function(){
         }
     ]
     for (var key in studenti){
-        var nomi = studenti[key].nome;
-        var cognomi = studenti[key].cognome;
-        var markup = " " + nomi + " " + cognomi;
+        
+        var markup = `
+        <ul>
+            <li>${studenti[key].nome} ${studenti[key].cognome} </li>
+        </ul>
+        `
         document.getElementById('sezione_studenti').innerHTML += markup;
     }
 });
@@ -63,7 +66,13 @@ bottoneDue.click(function(){
     });
 
    for (var key in studenti) {
-    document.getElementById("nuovo_studente").innerHTML += studenti[key].nome +" "+ studenti[key].cognome + " "  ;
+    document.getElementById("nuovo_studente").innerHTML +=
+    `
+    <ul>
+        <li>${studenti[key].nome} ${studenti[key].cognome} </li>
+    </ul>
+    `
+
  }
 });
 
